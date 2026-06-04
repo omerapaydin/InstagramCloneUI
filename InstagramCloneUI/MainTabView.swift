@@ -18,10 +18,10 @@ struct MainTabView: View {
 
                         VStack(alignment: .leading, spacing: 12) {
 
-                            // CARD BACKGROUND
+                            
                             VStack(alignment: .leading, spacing: 12) {
 
-                                // HEADER
+                                
                                 HStack(spacing: 10) {
                                     Circle()
                                         .fill(Color.gray.opacity(0.3))
@@ -43,7 +43,7 @@ struct MainTabView: View {
                                         .foregroundColor(.gray)
                                 }
 
-                                // IMAGE
+                                
                                 Image(systemName: post.image)
                                     .resizable()
                                     .scaledToFill()
@@ -53,7 +53,7 @@ struct MainTabView: View {
                                     .background(Color.gray.opacity(0.15))
                                     .cornerRadius(14)
 
-                                // ACTION BAR
+                                
                                 HStack(spacing: 18) {
 
                                     Button {

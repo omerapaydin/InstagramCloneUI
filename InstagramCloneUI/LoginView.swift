@@ -71,11 +71,11 @@ struct LoginView: View {
                                 .cornerRadius(14)
                         }
 
-                        // REGISTER NAVIGATION (DOĞRU YÖNTEM)
+                       
                         NavigationLink {
                             RegisterView(goLogin: {})
                         } label: {
-                            Text("Hesabın yok mu? Üye Ol")
+                            Text("Hesabın yok mu? Üye Ol").foregroundColor(.black)
                         }
 
                     }
