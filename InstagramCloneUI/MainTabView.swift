@@ -1,79 +1,117 @@
 import SwiftUI
 
-
-
 struct MainTabView: View {
 
     let posts = [
-        Post(username: "root", image: "photo", caption: "SwiftUI "),
+        Post(username: "root", image: "photo", caption: "SwiftUI 🔥"),
         Post(username: "dev", image: "photo", caption: "Instagram Clone"),
         Post(username: "ios", image: "photo", caption: "Hello world")
     ]
 
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
 
-                ForEach(posts) { post in
-                    VStack(alignment: .leading, spacing: 10) {
+                LazyVStack(spacing: 20) {
 
-                        // HEADER
-                        HStack {
-                            Circle()
-                                .frame(width: 35, height: 35)
+                    ForEach(posts) { post in
 
-                            Text(post.username)
-                                .fontWeight(.bold)
+                        VStack(alignment: .leading, spacing: 12) {
 
-                            Spacer()
+                            // CARD BACKGROUND
+                            VStack(alignment: .leading, spacing: 12) {
 
-                            Image(systemName: "ellipsis")
+                                // HEADER
+                                HStack(spacing: 10) {
+                                    Circle()
+                                        .fill(Color.gray.opacity(0.3))
+                                        .frame(width: 38, height: 38)
+
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(post.username)
+                                            .font(.subheadline)
+                                            .fontWeight(.semibold)
+
+                                        Text("2h ago")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+
+                                    Spacer()
+
+                                    Image(systemName: "ellipsis")
+                                        .foregroundColor(.gray)
+                                }
+
+                                // IMAGE
+                                Image(systemName: post.image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(height: 280)
+                                    .frame(maxWidth: .infinity)
+                                    .clipped()
+                                    .background(Color.gray.opacity(0.15))
+                                    .cornerRadius(14)
+
+                                // ACTION BAR
+                                HStack(spacing: 18) {
+
+                                    Button {
+                                        // like
+                                    } label: {
+                                        Image(systemName: "heart")
+                                            .font(.system(size: 20))
+                                    }
+
+                                    Button {
+                                        // comment
+                                    } label: {
+                                        Image(systemName: "message")
+                                            .font(.system(size: 20))
+                                    }
+
+                                    Button {
+                                        // share
+                                    } label: {
+                                        Image(systemName: "paperplane")
+                                            .font(.system(size: 20))
+                                    }
+
+                                    Spacer()
+
+                                    Button {
+                                        // save
+                                    } label: {
+                                        Image(systemName: "bookmark")
+                                            .font(.system(size: 20))
+                                    }
+                                }
+                                .foregroundColor(.black)
+
+                                // CAPTION
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(post.username)
+                                        .fontWeight(.semibold)
+                                        .font(.subheadline)
+
+                                    Text(post.caption)
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+
+                            }
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(18)
+                            .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
                         }
-
-                        // IMAGE
-                        Image(systemName: post.image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 250)
-                            .background(Color.gray.opacity(0.2))
-
-                        // ❤️ 💬 📤 ACTION BAR
-                        HStack(spacing: 15) {
-
-                            Button {
-                                // like action
-                            } label: {
-                                Image(systemName: "heart")
-                            }
-
-                            Button {
-                                // comment action
-                            } label: {
-                                Image(systemName: "message")
-                            }
-
-                            Button {
-                                // share action
-                            } label: {
-                                Image(systemName: "paperplane")
-                            }
-
-                            Spacer()
-
-                            Image(systemName: "bookmark")
-                        }
-                        .font(.system(size: 20))
-                        .foregroundColor(.black)
-
-                        // CAPTION
-                        Text(post.caption)
-                            .font(.subheadline)
-
+                        .padding(.horizontal)
                     }
-                    .padding()
                 }
+                .padding(.top, 10)
             }
-            .navigationTitle("Home")
+            .navigationTitle("Instagram")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
